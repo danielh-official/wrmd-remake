@@ -18,7 +18,7 @@ class HandleInertiaRequestsMiddleware extends Middleware
     /**
      * Determine the current asset version.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return string|null
      */
     public function version(Request $request): ?string
@@ -29,7 +29,7 @@ class HandleInertiaRequestsMiddleware extends Middleware
     /**
      * Define the props that are shared by default.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function share(Request $request): array
@@ -40,6 +40,11 @@ class HandleInertiaRequestsMiddleware extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'config' => [
+                'custom' => [
+                    'pages' => config('custom.pages')
+                ]
+            ]
         ]);
     }
 }
