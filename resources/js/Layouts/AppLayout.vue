@@ -1,7 +1,4 @@
-<!--suppress ALL -->
-
 <script setup lang="ts">
-import {Inertia} from '@inertiajs/inertia';
 import {Head} from '@inertiajs/inertia-vue3';
 // @ts-ignore
 import ApplicationMark from '@/Components/ApplicationMark.vue';
@@ -15,25 +12,28 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 // @ts-ignore
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import {JetstreamInterface, UserInterface} from "../interfaces";
+import {ConfigInterface, JetstreamInterface, UserInterface} from "../interfaces";
 import Navbar from "../Components/Navbar.vue";
 
 defineProps({
     title: {type: String, required: true},
     user: {type: Object as () => UserInterface, required: false},
-    jetstream: {type: Object as () => JetstreamInterface, required: false}
+    jetstream: {type: Object as () => JetstreamInterface, required: false},
+    logo: {type: String, required: true},
+    config: {type: Object as () => ConfigInterface, required: true},
 });
 </script>
 
 <template>
     <div>
+        <!--suppress HtmlRequiredTitleElement -->
         <Head :title="title"/>
 
         <Banner/>
 
         <div class="min-h-screen bg-gray-100">
             <slot name="navbar" v-if="$slots.navbar"></slot>
-            <Navbar v-else :jetstream="jetstream" :user="user"></Navbar>
+            <Navbar v-else :config="config" :logo="logo" :jetstream="jetstream" :user="user"></Navbar>
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="bg-white shadow">
