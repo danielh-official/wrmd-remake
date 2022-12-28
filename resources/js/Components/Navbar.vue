@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {JetstreamInterface, UserInterface} from "../interfaces";
+import {ConfigInterface, JetstreamInterface, UserInterface} from "../interfaces";
 import TeamsDropdown from "./Navbar/TeamsDropdown.vue";
 import SettingsDropdown from "./Navbar/SettingsDropdown.vue";
 import Hamburger from "./Navbar/Hamburger.vue";
@@ -7,13 +7,19 @@ import {ref} from "vue";
 import ResponsiveNavigationMenu from "./Navbar/ResponsiveNavigationMenu.vue";
 import ApplicationMark from "./ApplicationMark.vue";
 import NavLink from "./NavLink.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import {Link} from "@inertiajs/inertia-vue3";
 
 const showingNavigationDropdown = ref(false);
 
+const setShowingNavigationDropdown = (event: boolean) => {
+    showingNavigationDropdown.value = event;
+}
+
 defineProps({
     user: {type: Object as () => UserInterface | null, required: false},
-    jetstream: {type: Object as () => JetstreamInterface, required: false}
+    jetstream: {type: Object as () => JetstreamInterface, required: false},
+    logo: {type: String, required: true},
+    config: {required: true, type: Object as () => ConfigInterface}
 });
 </script>
 
@@ -26,7 +32,7 @@ defineProps({
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
                         <Link :href="route('dashboard')">
-                            <ApplicationMark class="block h-9 w-auto"/>
+                            <ApplicationMark :logo="logo" class="block h-9 w-auto"/>
                         </Link>
                     </div>
 
@@ -56,12 +62,14 @@ defineProps({
 
                 <!-- Hamburger -->
                 <div class="-mr-2 flex items-center sm:hidden">
-                    <Hamburger @click="showingNavigationDropdown = $event"></Hamburger>
+                    <Hamburger @update:modelValue="setShowingNavigationDropdown"
+                               :model-value="showingNavigationDropdown"></Hamburger>
                 </div>
             </div>
         </div>
 
         <!-- Responsive Navigation Menu -->
-        <ResponsiveNavigationMenu :user="user" :jetstream="jetstream" :showing-navigation-dropdown="showingNavigationDropdown"></ResponsiveNavigationMenu>
+        <ResponsiveNavigationMenu :config="config" :user="user" :jetstream="jetstream"
+                                  :showing-navigation-dropdown="showingNavigationDropdown"></ResponsiveNavigationMenu>
     </nav>
 </template>
