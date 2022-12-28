@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import {JetstreamInterface, UserInterface} from "../../interfaces";
+import {ConfigInterface, JetstreamInterface, UserInterface} from "../../interfaces";
 import ResponsiveNavLink from "../ResponsiveNavLink.vue";
+import {navbarLinks} from "../../Modules/links";
 
-defineProps({
-    showingNavigationDropdown: { required: true, type: Boolean },
-    user: { required: false, type: Object as () => UserInterface | null },
-    jetstream: { required: true, type: Object as () => JetstreamInterface }
+const props = defineProps({
+    showingNavigationDropdown: {required: true, type: Boolean},
+    user: {required: false, type: Object as () => UserInterface | null},
+    jetstream: {required: true, type: Object as () => JetstreamInterface},
+    config: {required: true, type: Object as () => ConfigInterface}
 });
+
+const responsiveNavLinks = navbarLinks(props)
 </script>
 <template>
     <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+            <ResponsiveNavLink v-if="user" :href="route('dashboard')" :active="route().current('dashboard')">
                 Dashboard
+            </ResponsiveNavLink>
+
+            <ResponsiveNavLink v-for="link in responsiveNavLinks" :href="link.href"
+                               :active="link.href === route().current()">
+                {{ link.name }}
             </ResponsiveNavLink>
         </div>
 
