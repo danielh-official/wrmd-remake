@@ -2,6 +2,7 @@
 import {ConfigInterface, JetstreamInterface, UserInterface} from "../../interfaces";
 import ResponsiveNavLink from "../ResponsiveNavLink.vue";
 import {navbarLinks} from "../../Modules/links";
+import DonationButton from "../DonationButton.vue";
 
 const props = defineProps({
     showingNavigationDropdown: {required: true, type: Boolean},
@@ -19,8 +20,12 @@ const responsiveNavLinks = navbarLinks(props)
                 Dashboard
             </ResponsiveNavLink>
 
+            <div class="text-center">
+                <DonationButton :link="config.custom.pages.makeADonation"></DonationButton>
+            </div>
+
             <ResponsiveNavLink v-for="link in responsiveNavLinks" :href="link.href"
-                               :active="link.href === route().current()">
+                               :active="link.href === route().current()" :as="!link.condition ? 'link' : ''">
                 {{ link.name }}
             </ResponsiveNavLink>
         </div>

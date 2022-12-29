@@ -8,6 +8,7 @@ import ResponsiveNavigationMenu from "./Navbar/ResponsiveNavigationMenu.vue";
 import ApplicationMark from "./ApplicationMark.vue";
 import NavLink from "./NavLink.vue";
 import {Link} from "@inertiajs/inertia-vue3";
+import DonationButton from "./DonationButton.vue";
 
 const showingNavigationDropdown = ref(false);
 
@@ -31,7 +32,7 @@ defineProps({
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <Link :href="route('dashboard')">
+                        <Link :href="!user ? route('home') : route('dashboard')">
                             <ApplicationMark :logo="logo" class="block h-9 w-auto"/>
                         </Link>
                     </div>
@@ -45,6 +46,9 @@ defineProps({
                 </div>
 
                 <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <div>
+                        <DonationButton :link="config.custom.pages.makeADonation"></DonationButton>
+                    </div>
                     <div class="ml-3 relative">
                         <slot name="links"></slot>
                     </div>
