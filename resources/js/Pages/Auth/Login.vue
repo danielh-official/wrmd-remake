@@ -15,10 +15,12 @@ import InputLabel from '../../Components/InputLabel.vue';
 import PrimaryButton from '../../Components/PrimaryButton.vue';
 // @ts-ignore
 import TextInput from '../../Components/TextInput.vue';
+import {ConfigInterface} from "../../interfaces";
 
 defineProps({
     canResetPassword: Boolean,
     status: String,
+    config: {type: Object as () => ConfigInterface, required: true}
 });
 
 const form = useForm({
@@ -98,12 +100,13 @@ export default {
             </div>
 
             <div class="flex sm:flow-root items-center space-x-5 mt-4">
-                <PrimaryButton color="green" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <PrimaryButton color="green" class="ml-4" :class="{ 'opacity-25': form.processing }"
+                               :disabled="form.processing">
                     Sign In!
                 </PrimaryButton>
 
-                <PrimaryButton color="red" v-if="canResetPassword" :href="route('password.request')"
-                      class="float-right">
+                <PrimaryButton color="red" v-if="canResetPassword" :href="config.custom.pages.forgotPassword"
+                               class="float-right">
                     Forgot My Password?
                 </PrimaryButton>
             </div>
@@ -115,9 +118,10 @@ export default {
 
         <template v-slot:footer>
             <p class="mb-3">
-                Before signing into Wildlife Rehabilitation <span class="text-xs">MD</span>, your organization first needs to create a <span class="uppercase">free</span> account.
+                Before signing into Wildlife Rehabilitation <span class="text-xs">MD</span>, your organization first
+                needs to create a <span class="uppercase">free</span> account.
             </p>
-            <PrimaryButton :href="route('register')" color="green">
+            <PrimaryButton :href="config.custom.pages.register" color="green">
                 Register Your Organization
             </PrimaryButton>
         </template>
