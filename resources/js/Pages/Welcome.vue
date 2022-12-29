@@ -1,4 +1,3 @@
-<!--suppress ALL -->
 <script lang="ts">
 import GuestLayout from "../Layouts/GuestLayout.vue";
 
@@ -7,7 +6,6 @@ export default {
 }
 </script>
 
-<!--suppress ALL -->
 <script setup lang="ts">
 import {Head, Link} from '@inertiajs/inertia-vue3';
 import {ConfigInterface, UserInterface} from "../interfaces";
@@ -23,6 +21,7 @@ defineProps({
 </script>
 
 <template>
+    <!--suppress HtmlRequiredTitleElement -->
     <Head title="Welcome"/>
 
     <div
@@ -31,10 +30,6 @@ defineProps({
             <Link v-if="user" :href="route('dashboard')"
                   class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard
             </Link>
-
-            <template v-else>
-
-            </template>
         </div>
     </div>
 </template>
