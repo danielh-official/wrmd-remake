@@ -1,12 +1,20 @@
-<script setup>
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import AuthenticationCard from '@/Components/AuthenticationCard.vue';
-import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+<!--suppress TypeScriptCheckImport -->
+<script setup lang="ts">
+import {Head, useForm} from '@inertiajs/inertia-vue3';
+// @ts-ignore
+import AuthenticationCard from '../../Components/AuthenticationCard.vue';
+// @ts-ignore
+import AuthenticationCardLogo from '../../Components/AuthenticationCardLogo.vue';
+// @ts-ignore
+import Checkbox from '../../Components/Checkbox.vue';
+// @ts-ignore
+import InputError from '../../Components/InputError.vue';
+// @ts-ignore
+import InputLabel from '../../Components/InputLabel.vue';
+// @ts-ignore
+import PrimaryButton from '../../Components/PrimaryButton.vue';
+// @ts-ignore
+import TextInput from '../../Components/TextInput.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -20,30 +28,42 @@ const form = useForm({
 });
 
 const submit = () => {
+    // @ts-ignore
+    const loginRoute = route('login');
+
     form.transform(data => ({
         ...data,
         remember: form.remember ? 'on' : '',
-    })).post(route('login'), {
+    })).post(loginRoute, {
         onFinish: () => form.reset('password'),
     });
 };
 </script>
 
+<script lang="ts">
+import GuestLayout from "../../Layouts/GuestLayout.vue";
+
+export default {
+    layout: GuestLayout
+}
+</script>
+
 <template>
-    <Head title="Log in" />
+    <!--suppress HtmlRequiredTitleElement -->
+    <Head title="Sign In"/>
 
     <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
-
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
+        <template v-slot:heading>
+            Sign In
+        </template>
+
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="Email"/>
                 <TextInput
                     id="email"
                     v-model="form.email"
@@ -51,12 +71,13 @@ const submit = () => {
                     class="mt-1 block w-full"
                     required
                     autofocus
+                    placeholder="Email"
                 />
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.email"/>
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Password"/>
                 <TextInput
                     id="password"
                     v-model="form.password"
@@ -64,26 +85,41 @@ const submit = () => {
                     class="mt-1 block w-full"
                     required
                     autocomplete="current-password"
+                    placeholder="Password"
                 />
-                <InputError class="mt-2" :message="form.errors.password" />
+                <InputError class="mt-2" :message="form.errors.password"/>
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <Checkbox v-model:checked="form.remember" name="remember"/>
+                    <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Remember me</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
+            <div class="flex sm:flow-root items-center space-x-5 mt-4">
+                <PrimaryButton color="green" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Sign In!
+                </PrimaryButton>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
+                <PrimaryButton color="red" v-if="canResetPassword" :href="route('password.request')"
+                      class="float-right">
+                    Forgot My Password?
                 </PrimaryButton>
             </div>
         </form>
+
+        <template v-slot:footer-heading>
+            Need an account?
+        </template>
+
+        <template v-slot:footer>
+            <p class="mb-3">
+                Before signing into Wildlife Rehabilitation <span class="text-xs">MD</span>, your organization first needs to create a <span class="uppercase">free</span> account.
+            </p>
+            <PrimaryButton :href="route('register')" color="green">
+                Register Your Organization
+            </PrimaryButton>
+        </template>
     </AuthenticationCard>
 </template>
