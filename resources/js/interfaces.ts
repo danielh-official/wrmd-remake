@@ -29,6 +29,10 @@ export interface ConfigInterface {
             makeADonation: string;
             forgotPassword: string;
             register: string;
+            termsAndPolicies: string;
+            about: string;
+            blog: string;
+            contact: string;
         }
     }
 }
