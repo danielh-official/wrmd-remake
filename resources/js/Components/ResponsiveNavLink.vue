@@ -6,6 +6,7 @@ const props = defineProps({
     active: Boolean,
     href: String,
     as: String,
+    hrefTargetBlank: {type: Boolean, default: true}
 });
 
 const classes = computed(() => {
@@ -25,7 +26,7 @@ const classes = computed(() => {
             <slot/>
         </Link>
 
-        <a v-else :href="href" :class="classes">
+        <a v-else :target="hrefTargetBlank ? '_blank' : ''" :href="href" :class="classes">
             <slot/>
         </a>
     </div>
