@@ -26,6 +26,7 @@ export interface ConfigInterface {
         pages: {
             features: string;
             getHelp: string;
+            makeADonation: string;
         }
     }
 }
