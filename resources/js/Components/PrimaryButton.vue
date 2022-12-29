@@ -18,6 +18,10 @@ const props = defineProps({
     color: {
         type: String,
         required: false
+    },
+    target: {
+        type: String,
+        default: "_blank"
     }
 });
 
@@ -44,7 +48,10 @@ if (!classString.value && color) {
     <button v-if="!href" :type="type" :class="classStringConstant">
         <slot/>
     </button>
-    <Link v-else :href="href" :class="classStringConstant">
+    <Link v-else-if="type === 'link'" :href="href" :class="classStringConstant">
         <slot/>
     </Link>
+    <a v-else :target="target" :href="href" :class="classStringConstant">
+        <slot/>
+    </a>
 </template>
