@@ -27,6 +27,8 @@ export interface ConfigInterface {
             features: string;
             getHelp: string;
             makeADonation: string;
+            forgotPassword: string;
+            register: string;
         }
     }
 }
