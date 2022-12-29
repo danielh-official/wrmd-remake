@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar.vue";
 import {Head, Link} from "@inertiajs/inertia-vue3";
 import Banner from "../Components/Banner.vue";
 import {navbarLinks} from "../Modules/links";
+import Footer from "../Components/Footer.vue";
 
 const props = defineProps({
     title: {type: String, default: "Welcome"},
@@ -54,6 +55,8 @@ const links = navbarLinks(props)
             <main>
                 <slot/>
             </main>
+
+            <Footer :config="config"></Footer>
         </div>
     </div>
 </template>
