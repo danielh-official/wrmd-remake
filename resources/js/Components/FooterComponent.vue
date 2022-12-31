@@ -54,6 +54,7 @@ const footerLinks: FooterLinkInterface[] = [
 ];
 
 // TODO: Make footer align with navbar.
+// TODO: https://levelup.gitconnected.com/how-to-use-tailwind-css-the-clean-way-4bfd46e3113
 
 </script>
 
@@ -110,7 +111,7 @@ const footerLinks: FooterLinkInterface[] = [
                 </a></li>
             </ul>
         </div>
-        <div class="text-xs py-2 text-right flex-1">
+        <div class="text-xs py-2 text-center sm:text-right flex-1">
             <ul class="mb-2">
                 <li v-for="(item, index) in footerLinks" :key="index">
                     <a class="hover:text-gray-300" :href="item.href" :target="item.targetIsBlank ? '_blank' : ''">{{
