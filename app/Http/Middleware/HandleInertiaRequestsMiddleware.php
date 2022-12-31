@@ -46,7 +46,8 @@ class HandleInertiaRequestsMiddleware extends Middleware
                     'pages' => config('custom.pages')
                 ]
             ],
-            'logo' => Storage::disk('public')->get('logo.svg')
+            'logo' => Storage::disk('public')->get('logo.svg'),
+            'demo-photo' => Storage::disk('public')->url('demo-photo.png')
         ]);
     }
 }
