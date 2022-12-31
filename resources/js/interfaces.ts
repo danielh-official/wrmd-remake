@@ -33,6 +33,8 @@ export interface ConfigInterface {
             about: string;
             blog: string;
             contact: string;
+            donateMonthly: string;
+            donateNow: string;
         }
     }
 }
