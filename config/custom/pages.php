@@ -9,5 +9,7 @@ return [
     'termsAndPolicies' => env('TERMS_AND_POLICIES_ROUTE', 'https://www.wrmd.org/about/terms-and-conditions'),
     'about' => env('ABOUT_ROUTE', 'https://www.wrmd.org/about'),
     'blog' => env("BLOG_ROUTE", 'https://blog.wrmd.org/'),
-    'contact' => env('CONTACT_ROUTE', 'https://www.wrmd.org/about/contact')
+    'contact' => env('CONTACT_ROUTE', 'https://www.wrmd.org/about/contact'),
+    'donateMonthly' => env('DONATE_MONTHLY_ROUTE', 'https://www.wrmd.org/donate?defaultInterval=m'),
+    'donateNow' => env('DONATE_NOW_ROUTE', 'https://www.wrmd.org/donate?defaultInterval=o')
 ];
