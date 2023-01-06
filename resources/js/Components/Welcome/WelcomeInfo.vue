@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-200 p-10 flex flex-col sm:flex-row space-x-3">
+    <div class="bg-gray-200 p-10 flex flex-col sm:flex-row space-x-3" id="welcome-info">
         <div class="sm:block sm:h-10 w-[7rem] sm:flex-auto hidden" v-html="logo"></div>
         <div class="text-sm text-gray-600 flex-auto sm:order-1 order-2">Wildlife Rehabilitation MD (WRMD) is a not-for-profit program
             serving
@@ -9,9 +9,9 @@
             Help?
         </div>
         <div class="flex flex-col flex-initial space-y-3 basis-1/12 sm:order-2 order-1 mb-2 sm:mb-0 text-center">
-            <PrimaryButton class="justify-center" target="_blank" :href="donateMonthlyUrl" color="green">Give Monthly
+            <PrimaryButton class="justify-center" target="_blank" :href="donateMonthlyUrl" color="green" id="monthly-donation-button">Give Monthly
             </PrimaryButton>
-            <PrimaryButton class="justify-center" target="_blank" :href="donateNowUrl" color="green">Give Now
+            <PrimaryButton class="justify-center" target="_blank" :href="donateNowUrl" color="green" id="donate-now-button">Give Now
             </PrimaryButton>
         </div>
     </div>
