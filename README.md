@@ -23,7 +23,7 @@ Clone the repository and run the following command in the root: `./vendor/bin/sa
 
 ### iPhone SE
 
-![](screenshots/localhost_(iPhone SE).png)
+![](screenshots/localhost_(iPhone%20SE).png)
 
 ![](screenshots/localhost_(iPhone%20SE)_Drawer%20Open.png)
 
