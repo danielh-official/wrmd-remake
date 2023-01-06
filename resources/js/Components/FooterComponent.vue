@@ -53,13 +53,10 @@ const footerLinks: FooterLinkInterface[] = [
     },
 ];
 
-// TODO: Make footer align with navbar.
-// TODO: https://levelup.gitconnected.com/how-to-use-tailwind-css-the-clean-way-4bfd46e3113
-
 </script>
 
 <template>
-    <footer class="bg-gray-500 flex flex-col sm:flex-row space-y-6 sm:space-y-0 space-x-6 dark:text-white px-5">
+    <footer class="bg-gray-500 text-white flex flex-col sm:flex-row space-y-6 sm:space-y-0 space-x-6 dark:text-white px-5 w-9/12 mx-auto">
         <div class="flex-1">
             WRMD is proudly supporting the standards of
             <ul class="flex flex-row bg-white p-5 space-x-6">
@@ -80,8 +77,8 @@ const footerLinks: FooterLinkInterface[] = [
                 </li>
             </ul>
         </div>
-        <div class="bg-gray-700 p-12 flex-1 place-self-center">
-            <ul class="flex p-5 space-x-6 justify-center">
+        <div class="bg-gray-700 sm:p-12 flex-1 place-self-center">
+            <ul class="flex p-5 space-x-2 sm:space-x-6 justify-center">
                 <li><a class="fill-gray-200 hover:fill-gray-400" target="_blank"
                        href="https://www.facebook.com/WildlifeRehabilitationMD">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
