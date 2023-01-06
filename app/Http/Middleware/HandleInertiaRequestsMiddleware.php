@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -44,7 +45,9 @@ class HandleInertiaRequestsMiddleware extends Middleware
                 'custom' => [
                     'pages' => config('custom.pages')
                 ]
-            ]
+            ],
+            'logo' => Storage::disk('public')->get('logo.svg'),
+            'demo-photo' => Storage::disk('public')->url('demo-photo.png')
         ]);
     }
 }
