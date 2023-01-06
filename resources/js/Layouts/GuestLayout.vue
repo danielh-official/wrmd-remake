@@ -28,7 +28,7 @@ const links = navbarLinks(props)
         <Banner/>
 
         <div class="min-h-screen bg-gray-100">
-            <Navbar :config="config" :logo="logo" :jetstream="jetstream" :user="user">
+            <Navbar id="navbar" :config="config" :logo="logo" :jetstream="jetstream" :user="user">
                 <template v-slot:links>
                     <div class="flex">
                         <div :key="key" v-for="(link, key) in links">
@@ -45,7 +45,7 @@ const links = navbarLinks(props)
             </Navbar>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
+            <header id="header" v-if="$slots.header" class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"/>
                 </div>
@@ -56,7 +56,7 @@ const links = navbarLinks(props)
                 <slot/>
             </main>
 
-            <FooterComponent :config="config"></FooterComponent>
+            <FooterComponent id="footer" :config="config"></FooterComponent>
 
         </div>
     </div>
