@@ -32,6 +32,7 @@ defineProps({
     <Head title="Welcome"/>
 
     <div
+        id="welcome-page"
         class="flex flex-col w-9/12 justify-center min-h-screen my-4">
         <WelcomeInfo class="mb-3" :logo="logo" :donate-now-url="config.custom.pages.donateNow"
                      :donate-monthly-url="config.custom.pages.donateMonthly"></WelcomeInfo>
