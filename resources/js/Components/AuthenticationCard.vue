@@ -16,7 +16,7 @@
             <slot name="footer-heading" />
         </div>
 
-        <div class="mt-5 dark:text-gray-300 sm:max-w-xl dark:bg-gray-900 sm:max-w-xl px-6 shadow-md overflow-hidden sm:rounded-lg py-4">
+        <div class="mt-5 bg-white dark:text-gray-300 sm:max-w-xl dark:bg-gray-900 sm:max-w-xl px-6 shadow-md overflow-hidden sm:rounded-lg py-4">
             <slot name="footer" />
         </div>
     </div>
