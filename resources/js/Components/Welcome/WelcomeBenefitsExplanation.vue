@@ -8,10 +8,10 @@ defineProps({
 </script>
 
 <template>
-    <div class="sm:w-6/12">
-        <div class="flex flex-col bg-blue-400 text-white p-4 sm:h-48">
+    <div class="sm:w-6/12" id="welcome-benefits-card">
+        <div class="flex flex-col bg-blue-400 text-white p-4">
 
-            <div class="text-3xl mb-8">How can Wildlife Rehabilitation <span
+            <div id="welcome-benefits-title" class="text-3xl mb-8">How can Wildlife Rehabilitation <span
                 class="text-xl">MD</span> benefit you?
             </div>
 
@@ -19,7 +19,7 @@ defineProps({
         </div>
 
 
-        <div class="flex bg-blue-500 text-white p-2 pl-5"><a href="https://www.wrmd.org/features" class="flex">
+        <div id="welcome-benefits-footer" class="flex bg-blue-500 text-white p-2 pl-5"><a href="https://www.wrmd.org/features" class="flex">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor"
                  class="w-6 h-6">
