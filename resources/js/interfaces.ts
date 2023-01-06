@@ -35,6 +35,7 @@ export interface ConfigInterface {
             contact: string;
             donateMonthly: string;
             donateNow: string;
+            testimonials: string;
         }
     }
 }
