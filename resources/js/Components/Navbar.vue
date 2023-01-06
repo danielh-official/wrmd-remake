@@ -38,14 +38,14 @@ defineProps({
                     </div>
 
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 lg:flex">
                         <NavLink v-if="user" :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </NavLink>
                     </div>
                 </div>
 
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <div class="hidden md:flex sm:items-center sm:ml-6">
                     <div>
                         <DonationButton :link="config.custom.pages.makeADonation"></DonationButton>
                     </div>
@@ -65,7 +65,7 @@ defineProps({
                 </div>
 
                 <!-- Hamburger -->
-                <div class="-mr-2 flex items-center sm:hidden">
+                <div class="-mr-2 flex items-center md:hidden">
                     <Hamburger @update:modelValue="setShowingNavigationDropdown"
                                :model-value="showingNavigationDropdown"></Hamburger>
                 </div>
