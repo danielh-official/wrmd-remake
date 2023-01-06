@@ -14,7 +14,7 @@ const props = defineProps({
 const responsiveNavLinks = navbarLinks(props)
 </script>
 <template>
-    <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+    <div id="navbar-responsive-navigation-menu" :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="md:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <ResponsiveNavLink v-if="user" :href="route('dashboard')" :active="route().current('dashboard')">
                 Dashboard
